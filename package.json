@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@hellomouse/eslint-config": "^1.1.4",
-    "eslint": "^7.4.0",
+    "eslint": "^7.31.0",
     "eslint-plugin-jsdoc": "^35.5.0"
   }
 }
