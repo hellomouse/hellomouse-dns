@@ -4,7 +4,7 @@ const DnsPacket = require('dns-packet');
 module.exports = class Packet {
   /**
    * The constructor
-   * @param {DnsPacket} packet
+   * @param {DnsPacket.Packet} packet
    */
   constructor(packet) {
     this.packet = packet;
@@ -31,14 +31,14 @@ module.exports = class Packet {
   }
   /**
    * Adds an answer to the answer section
-   * @param {object} answer - Resource Record to add
+   * @param {DnsPacket.Answer} answer - Resource Record to add
    */
   pushAnswer(answer) {
     this.packet.answers.push(answer);
   }
   /**
    * Adds an answer to the authority section
-   * @param {object} authority - Resource Record to add
+   * @param {DnsPacket.SoaAnswer} authority - Resource Record to add
    */
   pushAuthority(authority) {
     this.packet.authorities.push(authority);
