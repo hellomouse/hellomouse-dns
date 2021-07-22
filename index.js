@@ -17,7 +17,7 @@ queryProcessor.reload();
  *
  * @param {object} call - gRPC call object
  * @param {Buffer} call.msg - contains the serialized DNS packet
- * @param {Function} callback - callback called with (error, result)
+ * @param {(err?: any, result?: { msg: Buffer }) => any} callback - callback called with (error, result)
  */
 function processQuery(call, callback) {
   const packet = DnsPacket.decode(call.request.msg);

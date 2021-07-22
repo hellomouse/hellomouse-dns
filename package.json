@@ -30,6 +30,8 @@
   },
   "devDependencies": {
     "@hellomouse/eslint-config": "^1.1.4",
+    "@types/dns-packet": "^5.2.2",
+    "@types/node": "^16.4.0",
     "eslint": "^7.31.0",
     "eslint-plugin-jsdoc": "^35.5.0"
   }

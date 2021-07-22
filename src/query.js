@@ -8,10 +8,11 @@ const config = require('./config');
 class Response {
   /**
    * The constructor
-   * @param {DnsPacket} packet Query packet which this response is for
+   * @param {DnsPacket.Packet} packet Query packet which this response is for
    */
   constructor(packet) {
     // deep cloning but v8 does it for us instead
+    /** @type {DnsPacket.Packet} */
     this.packet = v8.deserialize(v8.serialize(packet));
     this.packet.type = 'response';
     this.packet.flags = 0;
@@ -29,14 +30,14 @@ class Response {
   }
   /**
    * Adds an answer to the answer section
-   * @param {object} answer - Resource Record to add
+   * @param {DnsPacket.Answer} answer - Resource Record to add
    */
   pushAnswer(answer) {
     this.packet.answers.push(answer);
   }
   /**
    * Adds an answer to the authority section
-   * @param {object} authority - Resource Record to add
+   * @param {DnsPacket.SoaAnswer} authority - Resource Record to add
    */
   pushAuthority(authority) {
     this.packet.authorities.push(authority);
@@ -61,7 +62,7 @@ class Context {
   /**
    * The constructor
    * @param {any} question
-   * @param {DNSPacket} request
+   * @param {DnsPacket.Packet} request
    * @param {Response} response
    * @param {Config} config
    */
@@ -70,6 +71,7 @@ class Context {
     this.request = request;
     this.response = response;
     this.config = config;
+    this.next = undefined;
   }
 }
 
@@ -148,8 +150,8 @@ class QueryProcessor {
   }
   /**
    * Gives an answer to a dns packet
-   * @param {DnsPacket} packet - DNS packet to answer
-   * @return {DnsPacket} - Response DNS packet
+   * @param {DnsPacket.Packet} packet - DNS packet to answer
+   * @return {Promise<DnsPacket.Packet>} - Response DNS packet
    */
   async answer(packet) {
     const response = new Response(packet);
