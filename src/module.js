@@ -28,7 +28,7 @@ class Module {
 class Zone extends Module {
   /**
    * The constructor
-   * @param {String} name - Name of the zone in the DNS hierarchy
+   * @param {string} name - Name of the zone in the DNS hierarchy
    * @param {object} tree - Resolving tree
    * @param {object} authority - Zone authority data (will be put into SOA record)
    */
@@ -51,8 +51,8 @@ class Zone extends Module {
 
   /**
    * Finds the correct handler inside the zone
-   * @param {String} name - Domain name
-   * @param {String} type - Resource record asked for in question
+   * @param {string} name - Domain name
+   * @param {string} type - Resource record asked for in question
    * @return {Function} - Tree leaf with the handler
    */
   findHandler(name, type) {
@@ -78,7 +78,7 @@ class Zone extends Module {
     debug('LEAF %O %s', leaf, leaf.toString());
     let handler = leaf[ctx.question.type] || leaf.ANY || leaf || { type: 'next' };
     ctx.response.soa = this.authority;
-    if (ctx.question.type == 'SOA') ctx.response.pushAnswer(Object.assign(this.authority, { name: ctx.question.name }))
+    if (ctx.question.type == 'SOA') ctx.response.pushAnswer(Object.assign(this.authority, { name: ctx.question.name }));
     switch (handler.type || 'static') {
       case 'static': {
         if (!handler.data) return;
@@ -134,7 +134,7 @@ class Middleware extends Module {
   /**
    * The constructor
    * @param {string} name - Name of the zone in the DNS hierarchy
-   * @param {function} handler - Handler for the middleware
+   * @param {Function} handler - Handler for the middleware
    */
   constructor(name, handler) {
     super(name);

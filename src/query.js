@@ -127,7 +127,7 @@ class QueryProcessor {
   /**
    * Finds a list of resolvers and middlewares
    * @param {string} name - Domain name of the question
-   * @return {array} - List of resolvers to use
+   * @return {Array} - List of resolvers to use
    */
   findResolver(name) {
     let resolvers = [...this.middlewares];
