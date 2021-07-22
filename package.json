@@ -1,0 +1,35 @@
+{
+  "name": "dnsd-ng",
+  "version": "1.0.0",
+  "description": "A rewrite of the hellomouse DNS system that uses gRPC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellomouse/dnsd-ng.git"
+  },
+  "keywords": [
+    "dns",
+    "grpc"
+  ],
+  "author": "hellomouse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellomouse/dnsd-ng/issues"
+  },
+  "homepage": "https://github.com/hellomouse/dnsd-ng#readme",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.3.6",
+    "@grpc/proto-loader": "^0.5.4",
+    "debug": "^4.1.1",
+    "dns-packet": "^5.2.1",
+    "pg": "^8.3.0",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@hellomouse/eslint-config": "^1.1.4",
+    "eslint": "^7.4.0"
+  }
+}

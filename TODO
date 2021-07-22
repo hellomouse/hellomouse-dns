@@ -1,0 +1,2 @@
+- should return NXDOMAIN for a nonexistent tree
+- add SOA to authority section for NOERROR or NXDOMAIN with empty answer section
