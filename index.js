@@ -34,7 +34,11 @@ function processQuery(call, callback) {
 
 const server = new grpc.Server();
 server.addService(DnsProto.DnsService.service, { Query: processQuery });
-server.bind(config.bind, grpc.ServerCredentials.createInsecure());
-server.start();
+server.bindAsync(config.bind, grpc.ServerCredentials.createInsecure(), (err, port) => {
+  if (err) throw err;
+  console.error('gprc.Server.bindAsync: bound to', port);
+  server.start();
+});
+
 
 process.on('SIGHUP', () => queryProcessor.reload());
