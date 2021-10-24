@@ -1,5 +1,5 @@
-const DnsPacket = require('dns-packet');
-const rcodes = require('dns-packet/rcodes');
+const DnsPacket = require('@hellomouse/dns-packet');
+const rcodes = require('@hellomouse/dns-packet/rcodes');
 const fs = require('fs');
 const v8 = require('v8');
 const config = require('./config');

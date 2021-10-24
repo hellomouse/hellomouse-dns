@@ -1,4 +1,4 @@
-const DnsPacket = require('dns-packet');
+const DnsPacket = require('@hellomouse/dns-packet');
 
 /** Light wrapper around packet with a bunch of utility methods */
 module.exports = class Packet {
